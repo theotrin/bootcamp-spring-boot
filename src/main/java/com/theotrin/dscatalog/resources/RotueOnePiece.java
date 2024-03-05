@@ -24,4 +24,5 @@ public class RotueOnePiece {
         return ResponseEntity.ok().body(tripulation);
 
     };
+
 }
