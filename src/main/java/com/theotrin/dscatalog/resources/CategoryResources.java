@@ -17,17 +17,22 @@ public class CategoryResources {
 
     @Autowired
     private CategoryServices service;
+
     @GetMapping
-    public ResponseEntity<List<CategoryDTO>> findAll(){
+    public ResponseEntity<List<CategoryDTO>> findAll() {
         List<CategoryDTO> list = service.findAll();
         return ResponseEntity.ok().body(list);
-    };
+    }
+
+    ;
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<CategoryDTO> findById(@PathVariable Long id){
+    public ResponseEntity<CategoryDTO> findById(@PathVariable Long id) {
         CategoryDTO dto = service.findById(id);
         return ResponseEntity.ok().body(dto);
-    };
+    }
+
+    ;
 
     @PostMapping
     public ResponseEntity<CategoryDTO> insert(@RequestBody CategoryDTO dto) {
@@ -37,6 +42,12 @@ public class CategoryResources {
                 .buildAndExpand(dto.getId()).toUri();
 
         return ResponseEntity.created(uri).body(dto);
-    };
+    }
 
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<CategoryDTO> update(@PathVariable Long id, @RequestBody CategoryDTO dto) {
+        dto = service.update(id, dto);
+        return ResponseEntity.ok().body(dto);
+    }
 }
