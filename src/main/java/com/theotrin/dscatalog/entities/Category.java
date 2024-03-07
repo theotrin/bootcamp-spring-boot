@@ -1,17 +1,14 @@
 package com.theotrin.dscatalog.entities;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
 import com.theotrin.dscatalog.dto.CategoryDTO;
 import com.theotrin.dscatalog.repositories.CategoryRepository;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,6 +22,10 @@ public class Category implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    private Instant createdAt;
+    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    private Instant updatedAt;
 
     public Category(){
 
