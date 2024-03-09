@@ -62,10 +62,7 @@ import java.util.stream.Collectors;
 
         public void delete(Long id) {
            try {
-               if (repository.existsById(id)) {
-                   repository.deleteById(id);
-               }
-               throw new ResourceNotFoundException("Id not found");
+               repository.deleteById(id);
            }
             catch (EntityNotFoundException e) {
                throw new ResourceNotFoundException("Id not found");
